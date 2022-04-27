@@ -54,9 +54,16 @@ class Trie {
     return true;
   }
 }
+
 var a = new Trie();
 a.insert("abcdefg");
 a.insert("abcdefg");
 a.insert("ab");
 a.insert("a");
 a.insert("nklo");
+console.log(a.root);
+// {
+//   a: { b: { c: [Object], isEnd: true }, isEnd: true },
+//   n: { k: { l: [Object] } }
+// }
+
