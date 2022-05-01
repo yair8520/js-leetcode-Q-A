@@ -6,7 +6,7 @@ function Myfunction(a) {
   };
 }
 
-console.log(Myfunction(1)(2)(3));
+//console.log(Myfunction(1)(2)(3));
 //---------------------------------------------------------------------
 function curry(f) {
   return (a) => {
@@ -16,14 +16,14 @@ function curry(f) {
   };
 }
 
-function sum(a, b) {
+function sum1(a, b) {
   return a + b;
 }
+let c = curry(sum1);
 
-console.log(curry(sum)(1)(2)); // 3
+//console.log(c(1)(2)); // 3
 ///----------------------------------------------------------------------
 function sum() {
-  console.log(...arguments);
   let result = [...arguments].reduce((acc, num) => acc + num, 0);
   let newSum = sum.bind(this, result);
   newSum.result = result;
@@ -31,5 +31,15 @@ function sum() {
   return newSum;
 }
 
-console.log(sum(3, 4)(5)(9).result);
+console.log(sum(3, 4)(5)(9));
 console.log(sum(3, 4)(5, 6)(9).result);
+//--------------------------------------------------------
+let add = (x) => (y) => x + y;
+
+function add2(x) {
+  return function (y) {
+    return x + y;
+  };
+}
+
+var a = add(2)(3);

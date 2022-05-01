@@ -10,8 +10,6 @@ var findDuplicate = function (nums) {
     fast = nums[nums[fast]];
     slow = nums[slow];
     if (fast === slow) {
-      //we have a loop
-
       let pointer = 0;
       while (pointer !== slow) {
         pointer = nums[pointer];

@@ -15,6 +15,6 @@ var isSameAfterReversals = function (num) {
     x = reverseNum;
   }
 
-  return num == reverseNum ? true : false;
+  return num == reverseNum;
 };
 console.log(isSameAfterReversals(1800));

@@ -1,9 +1,10 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[][]}
- */
- var fourSum = function(nums, target) {
-    
-};
-console.log(fourSum([1,0,-1,0,-2,2], target = 0))
+let add = (x) => (y) => x + y;
+
+function add2(x) {
+  return function (y) {
+    return x + y;
+  };
+}
+
+var a = add(2)(3);
+console.log(a);
