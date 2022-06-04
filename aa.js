@@ -1,4 +1,4 @@
-var numSteps = function (s) {
+var numSteps = function (S) {
   const numArray = [...S];
   let steps = numArray[numArray.length - 1] == 0 ? -1 : 0;
 
@@ -15,3 +15,4 @@ var numSteps = function (s) {
   return steps;
 };
 console.log(numSteps("011100"));
+console.log([" dsf"])

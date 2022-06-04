@@ -26,7 +26,7 @@ class Trie {
   search(word) {
     let node = this.root;
     for (let letter of word) {
-      // check if current letter is in the node
+      // check if current letter is in the this.root
       if (!node[letter]) {
         return false;
       } else {
@@ -56,14 +56,14 @@ class Trie {
 }
 
 var a = new Trie();
-a.insert("abcdefg");
+a.insert("abc");
 a.insert("abcdefg");
 a.insert("ab");
 a.insert("a");
-a.insert("nklo");
+a.insert("nk");
+a.search("abc");
 console.log(a.root);
 // {
 //   a: { b: { c: [Object], isEnd: true }, isEnd: true },
 //   n: { k: { l: [Object] } }
 // }
-

@@ -3,11 +3,9 @@
  * @param {number} target
  * @return {number[]}
  */
-var searchRange = function (nums, target) {
-  return [nums.indexOf(target), nums.lastIndexOf(target)];
+var searchRange = function (nums, target1,target2) {
+  return [nums.lastIndexOf(target1), nums.lastIndexOf(target2)];
 };
-console.log(searchRange([5, 7, 7, 8, 8, 10], 8));
+console.log(searchRange("ass", "a","s"));
 
-
-console.log(eval(unescape('(a, b) => a %2b b')))
 

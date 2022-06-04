@@ -1,27 +1,33 @@
-/**
- * @param {number[]} A
- * @return {number}
- */
-var firstMissingPositive = function (A) {
-  let len = A.length;
-
-  for (let i = 0; i < len; i++) {
-    if (A[i] < 0) A[i] = 0;
+var firstMissingPositive = function (nums) {
+  // if input: [1,2,0]
+  // eliminate the edge case
+  if (nums.length < 1) {
+    return 1;
   }
-  
-  for (let i = 0; i < len; i++) {
-    let pos = Math.abs(A[i]) - 1;
-    if (pos >= 0 && pos <= len) {
-      if (A[pos] > 0) A[pos] = -A[pos];
-      if (A[pos] === 0) A[pos] = -Infinity;
+
+  // we can use hash/obj to sort the numbers array
+  let myHash = {};
+
+  // we will take off negative numbers when we create myHash
+  for (let num of nums) {
+    if (num > 0) myHash[num] = true;
+  }
+
+  // myHash = { '0': true, '1': true, '2': true }
+
+  // 1 is first positive integer
+  let missing = 1;
+
+  for (missing; missing <= nums.length; missing++) {
+    // if the [missing key] doesn't exit, then we return the number
+    if (!myHash[missing]) {
+      return missing;
     }
-  }
- 
 
-  for (let i = 0; i < len; i++) {
-    if (A[i] >= 0) return i + 1;
+    // else we increment 1 then keep looping
   }
 
-  return len + 1;
+  // otherwise return 1
+  return missing;
 };
-console.log(firstMissingPositive([3,4,-1,1]));
+console.log(firstMissingPositive([3, 4, -1, 1]));

@@ -15,6 +15,7 @@ var longestWord = function (words) {
       }
     }
   }
+  console.log(set)
   return res;
 };
-console.log("abcd".slice(0, -1));
+console.log(longestWord(["a","banana","app","appl","ap","apply","apple"]));

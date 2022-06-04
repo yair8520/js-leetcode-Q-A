@@ -52,11 +52,11 @@ var preorderTraversal = function (root) {
  * @return {boolean}
  */
 var hasPathSum = function (root, targetSum) {
-    if (!root) return false;
-    
+  if (!root) return false;
+
   let hasPath = false;
   const dfs = (node, sum) => {
-      if (node.left === null && node.right === null) {
+    if (node.left === null && node.right === null) {
       if (sum === node.val) {
         hasPath = true;
       }
@@ -84,9 +84,7 @@ var hasPathSum = function (root, targetSum) {
  * }
  */
 /**
- * @param {number[]} nums 
+ * @param {number[]} nums
  * @return {TreeNode}
  */
- var sortedArrayToBST = function(nums) {
-    
-};
+var sortedArrayToBST = function (nums) {};

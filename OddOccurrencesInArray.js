@@ -8,7 +8,7 @@ function solution(A) {
       res.set(A[i], 1);
     }
   }
-  
+  console.log(res)
   return [...res].find(([key, value]) => value === 1)[0];
 }
 
