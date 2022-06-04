@@ -7,7 +7,7 @@ class Node {
 const initLinkedListFromArray = (array) => {
   if (array.length === 0) {
     return [];
-  }
+  } 
   let head = new Node(array[0]);
   let cur = head;
   for (let i = 1; i < array.length; i++) {
@@ -29,6 +29,7 @@ const printList = (head) => {
   console.log(printStr);
 };
 
+//////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 /**
  * Definition for singly-linked list.
