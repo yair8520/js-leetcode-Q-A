@@ -1,32 +1,35 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- * O(log n)
- */
-var search = function (nums, target) {
-  let l = 0;
-  let r = nums.length - 1;
 
-  while (l <= r) {
-    let m = Math.floor(l + (r - l) / 2);
+var search = function(rotatedSortedArray, targetValue) {
+  // Initialize two pointers for the binary search
+  let leftPointer = 0; // Left pointer
+  let rightPointer = rotatedSortedArray.length - 1; // Right pointer
 
-    if (nums[m] === target) return m;
+  // Continue the search while the left pointer is less than or equal to the right pointer
+  while (leftPointer <= rightPointer) {
+      // Calculate the middle index
+      let middleIndex = Math.floor(leftPointer + (rightPointer - leftPointer) / 2);
 
-    if (nums[l] <= nums[m]) {
-      if (nums[l] <= target && target < nums[m]) {
-        r = m - 1;
-      } else {
-        l = m + 1;
+      // Check if the middle element is the target
+      if (rotatedSortedArray[middleIndex] === targetValue) return middleIndex; // If found, return the index
+
+      // Determine which half of the array is sorted
+      if (rotatedSortedArray[leftPointer] <= rotatedSortedArray[middleIndex]) {     // Left half is sorted
+          // Check if the target is in the sorted left half
+          if (rotatedSortedArray[leftPointer] <= targetValue && targetValue < rotatedSortedArray[middleIndex]) {
+              rightPointer = middleIndex - 1; // Search in the left half
+          } else {
+              leftPointer = middleIndex + 1; // Search in the right half
+          }
+      } else { // Right half is sorted
+          // Check if the target is in the sorted right half
+          if (rotatedSortedArray[middleIndex] < targetValue && targetValue <= rotatedSortedArray[rightPointer]) {
+              leftPointer = middleIndex + 1; // Search in the right half
+          } else {
+              rightPointer = middleIndex - 1; // Search in the left half
+          }
       }
-    } else {
-      if (nums[m] < target && target <= nums[r]) {
-        l = m + 1;
-      } else {
-        r = m - 1;
-      }
-    }
   }
-  return -1;
+  return -1; // Return -1 if the target is not found
 };
+
 console.log(search([4, 5, 6, 7, 0, 1, 2], 0));

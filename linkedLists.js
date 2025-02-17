@@ -185,16 +185,15 @@ var isPalindrome = function (head) {
   }
   return true;
 };
-
+1,2,3,4,5
 const reverseLinkedList = (head) => {
-  let cur = head;
   let prev = null;
   let next;
-  while (cur) {
-    next = cur.next;
-    cur.next = prev;
-    prev = cur;
-    cur = next;
+  while (head) {
+    next = head.next;//reference to the next node
+    head.next = prev;//null,1
+    prev = head;//1,
+    head = next;//2,
   }
   return prev;
 };
@@ -217,7 +216,9 @@ var deleteDuplicates = function (head) {
   var current = head;
 
   while (current) {
-    if (current.next !== null && current.value == current.next.value) {
+    if (current.next !== null && 
+      current.value == current.next.value
+    ) {
       current.next = current.next.next;
     } else {
       current = current.next;
@@ -239,24 +240,31 @@ var deleteDuplicates = function (head) {
  * @return {ListNode}
  *  remove the nth node from the end of the list and return its head.
  */
-var removeNthFromEnd = function (head, n) {
-  let dummyHead = new ListNode(-Infinity);
-  dummyHead.next = head;
-  let resualtHead = dummyHead;
-  let count = 0;
-  let tail = head;
-  while (count < n) {
-    tail = tail.next;
+const removeNthFromEnd = (head, n) => {
+  // Create a dummy node to handle edge cases like removing the head node
+  let dummy = new ListNode(0);
+  dummy.next = head;
+
+  // Initialize two pointers, both starting at the dummy node
+  let fast = dummy;
+  let slow = dummy;
+
+  // Move the fast pointer n steps ahead
+  for (let i = 0; i < n; i++) {
+      fast = fast.next;
   }
-  let removeHead = head;
-  let prev = dummyHead;
-  while (tail) {
-    tail = tail.next;
-    prev = prev.next;
-    removeHead = removeHead.next;
+
+  // Move both pointers until the fast pointer reaches the end
+  while (fast.next !== null) {
+      fast = fast.next;
+      slow = slow.next;
   }
-  prev.next = removeHead.next;
-  return resualtHead;
+
+  // Now slow.next is the node to be removed
+  slow.next = slow.next.next;
+
+  // Return the head of the modified list
+  return dummy.next;
 };
 
 /**
